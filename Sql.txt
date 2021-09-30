@@ -1,0 +1,25 @@
+1° Questão
+
+SELECT COUNT(P.idStatus) AS 'qtd. processos', 
+S.dsStatus AS 'desc. status'
+FROM tb_Processo P
+INNER JOIN tb_Status S ON S.idStatus = P.idStatus
+GROUP BY P.idStatus;
+
+2° Questão
+
+SELECT MAX(dtAndamento) AS 'Maior dt do processo', nroProcesso FROM tb_Processo
+INNER JOIN tb_Andamento ON tb_Andamento.idProcesso = tb_Processo.idProcesso
+WHERE YEAR(dtEncerramento) = 2013 
+GROUP BY nroProcesso;
+
+3° Questão
+
+SELECT DtEncerramento, COUNT(DtEncerramento) 
+FROM tb_Processo 
+GROUP BY dtEncerramento
+HAVING COUNT(DtEncerramento) > 5;
+
+4°Questão 
+
+SELECT LPAD(CONVERT(nroProcesso, CHAR), 12 , '0') FROM tb_Processo;
